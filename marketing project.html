@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Marketing Project</title>
-    <meta name="description" content="Marketing Project">
+    <title>Teegarden's star c</title>
+    <meta name="description" content="Teegarden's star c">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.2.0/aframe.min.js"></script>
   <style>
     /* Container del quiz con sfondo sfumato, ombre e bordo */
@@ -182,7 +182,7 @@
 </head>
 <body>
     <a-scene>
-        <a-sky src="3d-foto.png"></a-sky>
+        <a-sky src="./3d-foto.png"></a-sky>
     
         <!-- Aggiungere una camera con cursore per interazione -->
         <a-camera>
@@ -190,7 +190,7 @@
         </a-camera>
     
         <!-- Testo Titolo -->
-        <a-text font="kelsonsans" value="Marketing Project" width="6" position="-2.5 0.25 -1.5"
+        <a-text font="kelsonsans" value="Teegarden's star c" width="6" position="-2.5 0.25 -1.5"
                 rotation="0 15 0"></a-text>
     
         <!-- Pulsante Interattivo per Avviare il Quiz -->
@@ -203,6 +203,33 @@
           </a-box>
         </a-entity>
       </a-scene>
+    
+      <!-- Modale per il Quiz -->
+      <div id="quiz-container">
+        <button id="close-button" onclick="closeQuiz()">×</button>
+        <h2>Teegarden's star c Quiz</h2>
+        <p id="question"></p>
+        <div id="answers"></div>
+        <p id="result-message"></p>
+        <button id="return-button" onclick="returnToMap()">Return to Map</button>
+        <button id="next-button" onclick="nextQuiz()">Next Question</button>
+      </div>
+    
+      <!-- Aggiungi il pulsante audio -->
+      <button id="audio-button" onclick="toggleAudio()">
+        <i class="fas fa-volume-up"></i>
+      </button>
+    
+      <!-- Aggiungi l'elemento audio -->
+      <audio id="background-audio" loop>
+        <source src="./quart.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+    <!-- Aggiungi il pulsante per il daltonismo -->
+    <button id="colorblind-button" onclick="toggleColorblindFilter()">
+        <i class="fas fa-eye"></i>
+    </button>
 
 
 
