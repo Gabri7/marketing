@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Marketing Project</title>
+    <meta name="description" content="Mrketing Project">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.2.0/aframe.min.js"></script>
+  <style>
+    /* Container del quiz con sfondo sfumato, ombre e bordo */
+    #quiz-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    display: none;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0.95;
+    }
+
+    /* Stile dei pulsanti con transizioni e gradienti */
+    #quiz-container button {
+    margin: 10px 5px;
+    padding: 15px;
+    background: linear-gradient(90deg, #1d976c, #93f9b9);
+    color: #1d1d1d;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #quiz-container button:hover {
+    background: linear-gradient(90deg, #1d976c, #68b684);
+    transform: translateY(-3px);
+    }
+
+    #quiz-container button:active {
+    transform: translateY(1px);
+    }
+
+    /* Messaggio di risultato con effetti di testo */
+    #result-message {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #f39c12;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Pulsante di chiusura stilizzato */
+    #close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+    #close-button:hover {
+    color: #f39c12;
+    }
+
+    #close-button:focus {
+    outline: none;
+    }
+
+    /* Pulsante di ritorno */
+    #return-button {
+    display: none;
+    margin-top: 20px;
+    background: linear-gradient(90deg, #f39c12, #e74c3c);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    #return-button:hover {
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    transform: translateY(-3px);
+    }
+
+    #return-button:active {
+    transform: translateY(1px);
+    }
+    #next-button {
+    display: none;
+    margin-top: 20px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    #next-button:hover {
+    background: linear-gradient(90deg, #3498db, #2c3e50);
+    transform: translateY(-3px);
+    }
+
+    #next-button:active {
+    transform: translateY(1px);
+    }
+
+    /*----------------*/
+
+    /* Stile per il pulsante audio e il pulsante daltonismo */
+    #audio-button, #colorblind-button {
+      position: fixed;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    #audio-button {
+      top: 20px;
+    }
+
+    #colorblind-button {
+      top: 80px;
+    }
+
+    #audio-button:hover, #colorblind-button:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    #audio-button i, #colorblind-button i {
+      font-size: 24px;
+      color: #333;
+    }
+    /* Classe per simulare la Deuteranopia usando CSS */
+    .deuteranopia {
+        filter: grayscale(0.5) sepia(1) hue-rotate(270deg) saturate(0.6);
+    }
+
+    /* Assicurarsi che il filtro si applichi a tutto il contenuto */
+    body.deuteranopia * {
+      filter: inherit;
+    }
+
+    /* Stile per il contenuto A-Frame */
+    .a-canvas {
+      position: fixed !important;
+    }
+  </style>
+  <!-- Aggiungi Font Awesome per le icone -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+    <a-scene>
+        <a-sky src="./3d-foto.png"></a-sky>
+    
+        <!-- Testo Titolo -->
+        <a-text font="kelsonsans" value="Colosseum Archaeological Museum" width="6" position="-2.5 0.25 -1.5"
+                rotation="0 15 0"></a-text>
+    
+        
+      </a-scene>
+    </body>
+</html>
